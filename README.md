@@ -1,5 +1,15 @@
 ## Verifly goole-maps module
 
+## Configration
+``` javascript
+{
+  encodePolyLines: true|false, // encode polylines using https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+  clientID: 'XXXXX', // the client id for Google Maps APIs Premium Plan
+  pk: 'XXXX', // the private key for Premium Plan to generate signature
+  key: 'xxxx' // api key
+}
+```
+
 ## Example
 ``` javascript
 const config = require('./config');
