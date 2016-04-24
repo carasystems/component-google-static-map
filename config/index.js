@@ -2,9 +2,9 @@
 
 module.exports = {
   scheme: 'https',
-  host: '//maps.googleapis.com/maps',
+  host: '//maps.googleapis.com',
   endpoints: {
-    staticmap: '/api/staticmap',
+    staticmap: '/maps/api/staticmap',
   },
   encodePolyLines: false,
 };

@@ -194,7 +194,7 @@ class StaticMapRequest {
     this.validate();
     if (!this.errorList.length) {
       /* eslint-disable max-len */
-      return makeRequest(this.config, this.args, this.config.mainHost + this.config.endpoints.staticmap);
+      return makeRequest(this.config, this.args, this.config.mainHost, this.config.endpoints.staticmap);
       /* eslint-enable max-len */
     }
     return null;
