@@ -194,8 +194,10 @@ class StaticMapRequest {
     this.validate();
     if (!this.errorList.length) {
       /* eslint-disable max-len */
-      return makeRequest(this.config, this.args, this.config.mainHost, this.config.endpoints.staticmap);
+      const url = makeRequest(this.config, this.args, this.config.mainHost, this.config.endpoints.staticmap);
+      this.args = {};
       /* eslint-enable max-len */
+      return url;
     }
     return null;
   }
