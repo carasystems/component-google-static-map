@@ -30,7 +30,6 @@ describe('circle parser tests', () => {
       validateResult.should.have.property('result');
       validateResult.result.should.equal(false);
     });
-
   });
 
   describe('parse', () => {
@@ -42,8 +41,9 @@ describe('circle parser tests', () => {
         details: 90
       };
       const parseResult = parser.parse(circleConf);
+      parseResult.should.be.a('array');
       const encodeUrl = 'weight:1|fillcolor:0xFFFF0033|enc:prtdGugeb[dw@ukAdw@tkAew@tkAew@ukA'
-      parseResult.should.equal(encodeUrl)
+      parseResult[0].should.equal(encodeUrl)
     });
   });
 

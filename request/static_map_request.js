@@ -146,7 +146,8 @@ class StaticMapRequest {
   path(paths) {
     const validateResult = pathsParser.validate(paths);
     if (validateResult.result) {
-      this.args.path = pathsParser.parse(paths, this.config.encodePolyLines);
+      this.args.path = this.args.path || [];
+      this.args.path = this.args.path.concat(pathsParser.parse(paths, this.config.encodePolyLines));
     } else {
       this.errorList.push({
         field: 'path',
@@ -160,7 +161,8 @@ class StaticMapRequest {
     const validateResult = circleParser.validate(options);
     if (validateResult.result) {
       this.args.center = centerParser.parse(options.center);
-      this.args.path = circleParser.parse(options);
+      this.args.path = this.args.path || [];
+      this.args.path = this.args.path.concat(circleParser.parse(options));
     } else {
       this.errorList.push({
         field: 'circle',

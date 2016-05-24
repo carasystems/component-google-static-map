@@ -23,7 +23,7 @@ function pathsParser(paths, encode) {
       });
     }
     return p.join('|');
-  }).join('|');
+  });
 }
 
 module.exports = {
@@ -46,4 +46,3 @@ module.exports = {
   },
   parse: pathsParser,
 };
-
