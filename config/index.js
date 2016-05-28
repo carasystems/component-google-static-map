@@ -6,5 +6,5 @@ module.exports = {
   endpoints: {
     staticmap: '/maps/api/staticmap',
   },
-  encodePolyLines: false,
+  encodePolyLines: true,
 };
