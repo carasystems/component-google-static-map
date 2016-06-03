@@ -1,6 +1,7 @@
 'use strict';
 
 const check = require('check-types');
+const math = require('mathjs');
 
 const pathParser = require('./paths_parser.js');
 const r = 6371;
@@ -13,8 +14,11 @@ function circleParser(options) {
   const _lat = (centerLat * pi) / 180;
   const _lng = (centerLng * pi) / 180;
   const radius = options.radius || 1;
+  const unit = options.unit || 'km';
   const details = options.details || 8;
-  const d = (radius) / r;
+  const radiusInUnit = math.unit(radius, unit);
+  const radiusByKiloMeter = radiusInUnit.toNumber('km');
+  const d = (radiusByKiloMeter) / r;
   const _options = Object.assign({}, options);
   _options.points = [];
   for (let i = 0; i <= 360; i += details) {
