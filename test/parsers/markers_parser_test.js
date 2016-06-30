@@ -47,4 +47,18 @@ describe('markers parser tests', () => {
     });
   });
 
+  describe('multiple location', () => {
+    it('multiple location should support array', () => {
+      const markers = [{
+        color: 'blue',
+        label: 'C',
+        icon: 'http://icon.io/icon',
+        location: ['11211,11206', '12345,67890', '24680,13579']
+      }];
+      const parseResult = parser.parse(markers);
+      parseResult.should.is.a('array');
+      parseResult.length.should.equal(1);
+      parseResult[0].should.equal('color:blue|label:C|icon:http://icon.io/icon|11211,11206|12345,67890|24680,13579');      
+    });
+  });
 });
