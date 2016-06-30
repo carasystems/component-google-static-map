@@ -16,7 +16,13 @@ function markersParser(markers) {
         m.push(`${prop}:${marker[prop]}`);
       }
     });
-    m.push(marker.location);
+
+    // https://developers.google.com/maps/documentation/static-maps/intro#MarkerLocations
+    if (Object.prototype.toString.call(marker.location) === '[object Array]') {
+      Array.prototype.push.apply(m, marker.location);
+    } else {
+      m.push(marker.location);
+    }
     return m.join('|');
   });
 }
