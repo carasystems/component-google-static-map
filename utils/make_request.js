@@ -14,9 +14,11 @@ function makeRequest(config, args, host, endpoint) {
     queryArgs.key = config.key;
   }
   let query = '';
-  if (config && config.pk && config.clientID) {
+  if (config && config.pk) {
     // generate signature
-    queryArgs.client = config.clientID;
+    if (config.clientID) {
+      queryArgs.client = config.clientID;
+    }
     const queryArr = qs.stringify(queryArgs, qsConf).split('');
     for (let i = 0; i < queryArr.length; ++i) {
       if (queryArr[i] === "'") {
@@ -24,7 +26,8 @@ function makeRequest(config, args, host, endpoint) {
       }
     }
     query = queryArr.join('');
-    const signer = crypto.createHmac('sha1', config.pk);
+    const pk = new Buffer(config.pk, 'base64');
+    const signer = crypto.createHmac('sha1', pk);
     let signature = signer.update(`${endpoint}?${query}`).digest('base64');
     signature = signature.replace(/\+/g, '-').replace(/\//g, '_');
     query = `${query}&signature=${signature}`;
